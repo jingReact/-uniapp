@@ -1,0 +1,1 @@
+<view class="order data-v-786bbe79"><block wx:if="{{isShow}}"><caballero vue-id="1" class="data-v-786bbe79" bind:__l="__l"></caballero></block><block wx:else><customer vue-id="2" class="data-v-786bbe79" bind:__l="__l"></customer></block></view>

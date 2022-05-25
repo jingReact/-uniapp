@@ -1,0 +1,241 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.allorder.data-v-424fcf10 {
+  width: 100%;
+  height: calc(100vh - 88rpx);
+  background-color: #F5F5F6;
+  padding: 20rpx 20rpx 0;
+  box-sizing: border-box;
+}
+.allorder .crad.data-v-424fcf10 {
+    width: 100%;
+    height: 600rpx;
+    background-color: #FFf;
+    border-radius: 20rpx;
+    padding: 20rpx;
+    box-sizing: border-box;
+}
+.allorder .crad .merchants.data-v-424fcf10 {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+              justify-content: space-between;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+              align-items: center;
+      padding-bottom: 20rpx;
+      margin-bottom: 20rpx;
+      border-bottom: 1rpx solid #F5F5F5;
+}
+.allorder .crad .merchants .merchants_l.data-v-424fcf10 {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-between;
+                justify-content: space-between;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+                align-items: center;
+        width: 70%;
+        font-size: 32rpx;
+}
+.allorder .crad .merchants .merchants_l .img_mer.data-v-424fcf10 {
+          width: 60rpx;
+          height: 60rpx;
+          background-color: deeppink;
+          border-radius: 10rpx;
+          margin-right: 10rpx;
+}
+.allorder .crad .merchants .merchants_l .wz_mer.data-v-424fcf10 {
+          -webkit-box-flex: 1;
+          -webkit-flex: 1;
+                  flex: 1;
+}
+.allorder .crad .merchants .merchants_r image.data-v-424fcf10 {
+        width: 30rpx;
+        height: 30rpx;
+        margin-left: 5rpx;
+}
+.allorder .crad .goods.data-v-424fcf10 {
+      width: 100%;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+              justify-content: space-between;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+              align-items: center;
+      margin-bottom: 20rpx;
+}
+.allorder .crad .goods .goods_l.data-v-424fcf10 {
+        width: 75%;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+                align-items: center;
+        font-size: 30rpx;
+}
+.allorder .crad .goods .goods_l .goods_img.data-v-424fcf10 {
+          height: 150rpx;
+          width: 150rpx;
+          margin-right: 15rpx;
+          background-color: skyblue;
+          border-radius: 10rpx;
+}
+.allorder .crad .goods .goods_r.data-v-424fcf10 {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+                flex-direction: column;
+}
+.allorder .crad .goods .goods_r text.data-v-424fcf10:first-child {
+          font-size: 32rpx;
+}
+.allorder .crad .goods .goods_r text.data-v-424fcf10:last-child {
+          font-size: 26rpx;
+          color: #777777;
+}
+.allorder .crad .info_kh.data-v-424fcf10 {
+      height: 80rpx;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+              flex-direction: column;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+              justify-content: space-between;
+      margin-bottom: 20rpx;
+}
+.allorder .crad .info_kh .dz.data-v-424fcf10 {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-between;
+                justify-content: space-between;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+                align-items: center;
+        font-size: 26rpx;
+}
+.allorder .crad .info_kh .dz image.data-v-424fcf10 {
+          width: 30rpx;
+          height: 30rpx;
+}
+.allorder .crad .info_kh .xx.data-v-424fcf10 {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        color: #909292;
+        font-size: 26rpx;
+}
+.allorder .crad .info_kh .xx text.data-v-424fcf10:first-child {
+          margin-right: 30rpx;
+}
+.allorder .crad .ps.data-v-424fcf10 {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+              justify-content: space-between;
+      font-size: 26rpx;
+      margin-bottom: 20rpx;
+}
+.allorder .crad .sj.data-v-424fcf10 {
+      margin-bottom: 20rpx;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+              justify-content: space-between;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+              align-items: center;
+      font-size: 26rpx;
+}
+.allorder .crad .sj view.data-v-424fcf10 {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+                align-items: center;
+}
+.allorder .crad .sj view image.data-v-424fcf10 {
+          width: 30rpx;
+          height: 30rpx;
+}
+.allorder .crad .sj view text.data-v-424fcf10 {
+          color: #EF8934;
+}
+.allorder .crad .btn.data-v-424fcf10 {
+      border-radius: 10rpx;
+      font-size: 32rpx;
+      line-height: 60rpx;
+      width: 170rpx;
+      height: 60rpx;
+      text-align: center;
+      float: right;
+      background-color: #F9DC67;
+}
+.allorder .crad .act.data-v-424fcf10 {
+      background-color: #3875F7;
+      color: #fff;
+}
+.allorder .crad .upload view.data-v-424fcf10 {
+      border-radius: 10rpx;
+      font-size: 32rpx;
+      line-height: 60rpx;
+      width: 220rpx;
+      height: 60rpx;
+      text-align: center;
+      float: right;
+      color: #fff;
+}
+.allorder .crad .upload .sc.data-v-424fcf10 {
+      background-color: #5FB4F7;
+      margin-left: 20rpx;
+}
+.allorder .crad .upload .code.data-v-424fcf10 {
+      background-color: #58BE6B;
+}
+

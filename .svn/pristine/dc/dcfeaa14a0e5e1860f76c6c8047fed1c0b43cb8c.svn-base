@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "订单",
+  "usingComponents": {
+    "caballero": "/pages/order/caballero",
+    "customer": "/pages/order/customer"
+  }
+}

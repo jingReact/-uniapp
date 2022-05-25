@@ -1,0 +1,189 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "订餐平台",
+				"navigationStyle":"custom"
+			}
+		},
+	   {
+		"path": "pages/paymentOrder/paymentOrder",
+		"style": {
+			"navigationBarTitleText": "支付订单",
+			"navigationStyle": "custom"
+		}
+	    },
+		{
+			"path": "pages/address/address",
+			"style": {
+				"navigationBarTitleText": "收货地址"
+				// "navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/address/addressManage",
+			"style": {
+				"navigationBarTitleText": "新增地址"
+				// "navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/submit/submit",
+			"style": {
+				"navigationBarTitleText": "提交订单"
+			}
+		},
+		{
+			"path": "pages/notes/notes",
+			"style": {
+				"navigationBarTitleText": "订单备注"
+			}
+		},
+		{
+			"path": "pages/orderdel/orderdel",
+			"style": {
+				"navigationBarTitleText": "订单详情"
+			}
+		},
+		{
+			"path": "pages/aptitude/aptitude",
+			"style": {
+				"navigationBarTitleText": "资质证明"
+			}
+		},
+		{
+			"path": "pages/details/details",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle":"custom"
+			}
+		},
+		{
+			"path": "pages/evaluation/evaluation",
+			"style": {
+				"navigationBarTitleText": "订单评价"
+			}
+		},
+		{
+			"path": "pages/home/home",
+			"style": {
+				"navigationBarTitleText": "首页",
+				"navigationStyle":"custom"
+				
+			}
+		},
+		{
+			"path": "pages/caballero/caballero",
+			"style": {
+				"navigationBarTitleText": "订单",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/customer/customer",
+			"style": {
+				"navigationBarTitleText": "订单",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/agreement/agreement",
+			"style": {
+				"navigationBarTitleText": "用户服务协议"
+			}
+		},
+		{
+			"path": "pages/privacy/privacy",
+			"style": {
+				"navigationBarTitleText": "隐私政策"
+			}
+		},
+		{
+			"path": "pages/user/user",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		},
+		{
+			"path": "pages/merchants/merchants",
+			"style": {
+				"navigationBarTitleText": "商家",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/refund/refund",
+			"style": {
+				"navigationBarTitleText": "退款"
+			}
+		}
+		
+	    ,{
+            "path" : "pages/HealthCard/HealthCard",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8",
+		"usingComponents": {
+			"van-tab": "/wxcomponents/vant/dist/tab/index",
+			"van-tabs": "/wxcomponents/vant/dist/tabs/index",
+			"van-uploader": "/wxcomponents/vant/dist/uploader/index",
+			 "van-picker": "/wxcomponents/vant/dist/picker/index",
+			 "van-popup": "/wxcomponents/vant/dist/popup/index"
+		}
+
+	},
+	"tabBar": {
+		"color": "#C0C4CC",
+		"selectedColor": "#3875F7",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+				"pagePath": "pages/home/home",
+				"iconPath": "static/home1.png",
+				"selectedIconPath": "static/home.png",
+				"text": ""
+			},
+			{
+				"pagePath": "pages/caballero/caballero",
+				"iconPath": "static/order1.png",
+				"selectedIconPath": "static/order.png",
+				"text": ""
+			},
+			{
+				"pagePath": "pages/customer/customer",
+				"iconPath": "static/order1.png",
+				"selectedIconPath": "static/order.png",
+				"text": ""
+			},
+			{
+				"pagePath": "pages/user/user",
+				"iconPath": "static/user1.png",
+				"selectedIconPath": "static/user.png",
+				"text": ""
+			}
+		]
+	},
+	"condition" : { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式(list 的索引项)
+		"list": [
+			{
+				"name": "", //模式名称
+				"path": "", //启动页面，必选
+				"query": "" //启动参数，在页面的onLoad函数里面得到
+			}
+		]
+	}
+	
+}

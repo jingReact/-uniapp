@@ -1,0 +1,44 @@
+<script>
+	export default {
+		onLaunch: function() {
+			// wx.getSystemInfo({
+			// 	success: res => {
+			// 		const res = wx.getSystemInfoSync()
+			// 		const { screenHeight, safeArea: { bottom } } = res,
+			// 		if (screenHeight && bottom){
+			// 		  let safeBottom = screenHeight - bottom
+			// 		  console.log(safeBottom,'333')
+			// 		  // this.setData({
+			// 		  //   height: 98 + safeBottom
+			// 		  // })
+			// 		  this.$store.dispatch('setNavHeight', 98 + safeBottom)
+			// 		}
+					
+			// 	},
+			// 	fail(err) {
+			// 		console.log(err);
+			// 	}
+			// })
+			const res = wx.getSystemInfoSync()
+			const { screenHeight, safeArea: { bottom } } = res
+			
+			if (screenHeight && bottom){
+			  let safeBottom = (screenHeight - bottom)/2
+			  // console.log(safeBottom,'123');
+			 this.$store.dispatch('setNavHeight', 48 + safeBottom)
+			}
+		},
+		onShow: function() {
+			console.log('App Show')
+		},
+		onHide: function() {
+			console.log('App Hide')
+		}
+	}
+</script>
+
+<style>
+	/*每个页面公共css */
+	@import "/wxcomponents/vant/dist/common/index.wxss";
+	@import "/common/iconfont/iconfont.css";
+</style>

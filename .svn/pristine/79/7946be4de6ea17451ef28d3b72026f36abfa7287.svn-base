@@ -1,0 +1,676 @@
+<template>
+	<view class="customer">
+		<van-tabs v-model="active" @change="onChange" color="#F9DC67">
+			<van-tab title="全部订单">
+				<view class="housing_box">
+					<!-- <scroll-view scroll-y="true" @scrolltolower="upper()" @scrolltoupper="topper()" style="height: 100%;"> -->
+						<view class="allorder">
+							<view class="crad" v-for="(item,index) in orderlist" :key="index">
+								<view class="merchants" >
+									<view class="merchants_l">
+										<view class="img_mer">
+											<image src="../../static/dianjia.png" mode=""></image>
+										</view>
+										<view class="wz_mer">
+											<text>{{item.restaurant_name}}</text>
+											<image src="../../static/home/jiantou.png" mode=""></image>
+										</view>
+									</view>
+									<view class="merchants_r">
+										{{item.status_bar.title}}
+									</view>
+								</view>
+								<view class="cp_lb">
+									<text>餐次:{{item.cbName}}({{item.day}})</text>
+									<!-- <text v-if="item.cbId == '3'"></text>
+									<text v-if="item.cbId == '9'">中餐({{item.day}})</text>
+									<text v-if="item.cbId == '6'">晚餐({{item.day}})</text> -->
+								</view>
+								<view class="goods" v-for="(item1,index1) in item.basket.group" :key="index1"  @click="toDetails(item.id)">
+									<view class="goods_l">
+										<view class="goods_img">
+											<image style="width: 100%;height: 100%;" :src="httpImg+item1.imagePath" mode="scaleToFill"></image>
+										</view>
+										<view class="sp">
+											{{item1.name}}
+										</view>
+									</view>
+									<view class="goods_r">
+										<text>¥{{item1.price}}</text>
+										<text>共{{item1.quantity}}件</text>
+									</view>
+								</view>
+								<view class="Pto_time">
+									<text>下单时间:</text><text>{{item.formatted_create_at}}</text>
+								</view>
+								<view class="jg_content">
+									<view class="ddje_content">
+										订单金额:¥{{item.total_amount}}
+									</view>
+									<view class="sfje_content">
+										实付金额:¥{{item.actual_mount}}
+									</view>
+								</view>
+								<view class="Pto_time delivery" v-if="item.status_code===3||item.status_code===4||item.status_code===5">
+									<text>配餐员电话:</text><text>{{item.delivery.account}}</text>
+								</view>
+								<view class="btn" @click="toHome" v-if="item.status_code!==0">
+									再来一单
+								</view>
+								<view class="btn acts" v-if="item.status_code===0"  @click="isPay(item.total_amount,item.unique_id)">
+									去支付
+								</view>
+								<!-- <view class="btn acts" @click="toEvaluation(item.id)">
+									去评论
+								</view> -->
+								<!-- -->
+								<view class="btn acts" v-if ="item.is_user_redfund === 1"  @click="toTk(item.unique_id,item.total_amount)">
+									一键退款
+								</view>
+								<view class="btn acts" v-if="item.status_code===0" @click="Cancel(item.unique_id,item.user_id)">
+									取消订单
+								</view>
+							</view>
+							<uni-load-more :status="loadingStatus"></uni-load-more>
+						</view>
+						<view class="empty_content" v-if="noDataFlag">
+							<image src="../../static/bg.png" mode=""></image>
+							<text>暂无订单</text>
+						</view>
+					<!-- </scroll-view> -->
+				
+				</view>
+			</van-tab>
+			<van-tab title="待评价">
+				<view class="housing_box">
+					<!-- <scroll-view scroll-y="true" @scrolltolower="upper()" style="height: 100%;"> -->
+						<view class="allorder">
+							<view class="crad" v-for="(item,index) in orderlist" :key="index">
+								<view class="merchants">
+									<view class="merchants_l">
+										<view class="img_mer">
+											<image src="../../static/dianjia.png" mode=""></image>
+										</view>
+										<view class="wz_mer">
+											<text>{{item.restaurant_name}}</text>
+											<image src="../../static/home/jiantou.png" mode=""></image>
+										</view>
+									</view>
+									<view class="merchants_r">
+										{{item.status_bar.title}}
+									</view>
+								</view>
+								<view class="cp_lb">
+									<text>餐次:{{item.cbName}}({{item.day}})</text>
+									<!-- <text v-if="item.cbId == '3'">早餐({{item.day}})</text>
+									<text v-if="item.cbId == '9'">中餐({{item.day}})</text>
+									<text v-if="item.cbId == '6'">晚餐({{item.day}})</text> -->
+								</view>
+								<view class="goods" v-for="(item1,index1) in item.basket.group" :key="index1" @click="toDetails(item.id)">
+									<view class="goods_l">
+										<view class="goods_img">
+											<image style="width: 100%;height: 100%;" :src="httpImg+item1.imagePath" mode="scaleToFill"></image>
+										</view>
+										<view class="sp">
+											{{item1.name}}
+										</view>
+									</view>
+									<view class="goods_r">
+										<text>¥{{item1.price}}</text>
+										<text>共{{item1.quantity}}件</text>
+									</view>
+									
+								</view>
+								<view class="Pto_time">
+									<text>下单时间:</text><text>{{item.formatted_create_at}}</text>
+								</view>
+								<view class="jg_content">
+									<view class="ddje_content">
+										订单金额:¥{{item.total_amount}}
+									</view>
+									<view class="sfje_content">
+										实付金额:¥{{item.actual_mount}}
+									</view>
+								</view>
+								<view class="Pto_time delivery">
+									<text>配餐员电话:</text><text>{{item.delivery.account}}</text>
+								</view>
+								<view class="btn" @click="toHome">
+									再来一单
+								</view>
+								<view class="btn acts" @click="toEvaluation(item.id,item.restaurant_name)">
+									去评论
+								</view>
+							</view>
+							<uni-load-more :status="loadingStatus"></uni-load-more>
+						</view>
+
+						<view class="empty_content" v-if="noDataFlag">
+							<image src="../../static/bg.png" mode=""></image>
+							<text>暂无待评价订单</text>
+						</view>
+					<!-- </scroll-view> -->
+
+				</view>
+
+			</van-tab>
+			<van-tab title="已退款">
+				<view class="housing_box">
+					<!-- <scroll-view scroll-y="true" @scrolltolower="upper()" style="height: 100%;"> -->
+						<view class="allorder">
+							<view class="crad" v-for="(item,index) in orderlist" :key="index">
+								<view class="merchants">
+									<view class="merchants_l">
+										<view class="img_mer">
+											<image src="../../static/dianjia.png" mode=""></image>
+										</view>
+										<view class="wz_mer">
+											<text>{{item.restaurant_name}}</text>
+											<image src="../../static/home/jiantou.png" mode=""></image>
+										</view>
+									</view>
+									<view class="merchants_r">
+										{{item.status_bar.title}}
+									</view>
+								</view>
+								<view class="cp_lb">
+									<text>餐次:{{item.cbName}}({{item.day}})</text>
+									<!-- <text>餐次:</text>
+									<text v-if="item.cbId == '3'">早餐({{item.day}})</text>
+									<text v-if="item.cbId == '9'">中餐({{item.day}})</text>
+									<text v-if="item.cbId == '6'">晚餐({{item.day}})</text> -->
+								</view>
+								<view class="goods" v-for="(item1,index1) in item.basket.group" :key="index1">
+									<view class="goods_l">
+										<view class="goods_img">
+											<image style="width: 100%;height: 100%;" :src="httpImg+item1.imagePath" mode="scaleToFill"></image>
+										</view>
+										<view class="sp">
+											{{item1.name}}
+										</view>
+									</view>
+									<view class="goods_r">
+										<text>¥{{item1.price}}</text>
+										<text>共{{item1.quantity}}件</text>
+									</view>
+								</view>
+								<view class="Pto_time">
+									<text>下单时间:</text><text>{{item.formatted_create_at}}</text>
+								</view>
+								<view class="jg_content">
+									<view class="ddje_content">
+										订单金额:¥{{item.total_amount}}
+									</view>
+									<view class="sfje_content">
+										实付金额:¥{{item.actual_mount}}
+									</view>
+								</view>
+								<view class="Pto_time delivery">
+									<text>配餐员电话:</text><text>{{item.delivery.account}}</text>
+								</view>
+								<view class="btn" @click="toHome">
+									再来一单
+								</view>
+								<!-- <view class="btn acts" @click="toEvaluation(item.id,item.restaurant_name)">
+									去评论
+								</view> -->
+							</view>
+							<uni-load-more :status="loadingStatus"></uni-load-more>
+						</view>
+
+						<view class="empty_content" v-if="orderlist.length == 0">
+							<image src="../../static/bg.png" mode=""></image>
+							<text>暂无退款订单</text>
+						</view>
+					<!-- </scroll-view> -->
+				</view>
+
+			</van-tab>
+		</van-tabs>
+		
+		<tab-bar class="tabbar" :pagePath="'/pages/customer/customer'"></tab-bar>
+	</view>
+</template>
+
+<script>
+	import http from '@/common/js/http.js';
+	import testData from "@/common/js/testdata.js";
+	export default {
+		// props:['orderlist'],
+		// props:[showWrapperActive],
+		data() {
+			return {
+				loadingStatus: 'none',
+				noDataFlag: false,
+				active: 0,
+				limit: 5, //每页数据个数
+				pageNum: 1,
+				total: null,
+				orderlist: [],
+				emulator_Height: 0,
+				statusCode:'',
+				httpImg: '',
+			}
+		},
+		methods: {
+			onPullDownRefresh() {
+				this.parentHandleclick()
+				
+			},
+			onReachBottom() {
+				//阻止重复加载
+				this.upper()
+				
+			},
+			//取消订单
+			Cancel(uid,id){
+				let that = this
+				wx.showModal({
+				  title: '提示',
+				  content: '是否确认取消订单',
+				  success (res) {
+				    if (res.confirm) {
+				      // console.log('用户点击确定')
+					  http.getCancel({
+						  orderId:uid,
+						  userId:id
+					  }).then(res =>{
+						  that.allorder()
+					  })
+				    } else if (res.cancel) {
+				      console.log('用户点击取消')
+				    }
+				  }
+				})
+			},
+			isPay(meney, id) {
+					uni.navigateTo({
+						url: "/pages/paymentOrder/paymentOrder?payNum=" + meney + "&orderid=" + id
+					})
+			},
+			toDetails(id){
+				uni.navigateTo({
+				    url: '/pages/orderdel/orderdel?id='+ id
+				});
+			},
+			onChange(e) {
+				this.active = e.detail.index;
+				this.limit = 5;
+				this.pageNum = 1;
+				this.loadingStatus = 'none';
+				if (this.active === 1) {
+					this.orderlist = []
+					this.noDataFlag =false;
+					this.requireOrder(4)
+				} else if (this.active === 0) {
+					this.orderlist = []
+					this.noDataFlag =false;
+					http.getorderslist({
+						userId: uni.getStorageSync("user").phone,
+						limit: this.limit,
+						pageNum: this.pageNum,
+
+					}).then(res => {
+						this.orderlist = res.data.records
+						this.total = res.data.total
+						// console.log('用户订单',this.orderlist)
+					})
+				} else if (this.active === 2) {
+					this.orderlist = []
+					this.noDataFlag =false;
+					this.requireOrder(-2)
+				}
+			},
+			parentHandleclick() {
+				uni.showLoading({
+					title: '加载中...',
+				})
+				if (this.active === 1) {
+					this.orderlist = []
+					this.noDataFlag =false;
+					this.requireOrder(4)
+				} else if (this.active === 0) {
+					this.orderlist = []
+					this.noDataFlag =false;
+					http.getorderslist({
+						userId: uni.getStorageSync("user").phone,
+						limit: this.limit,
+						pageNum: 1,
+
+					}).then(res => {
+						this.orderlist = res.data.records
+						if(this.orderlist.length == 0 ){
+							this.noDataFlag =true;
+						}
+						this.total = res.data.total
+						uni.hideLoading();
+						uni.stopPullDownRefresh();
+					})
+				} else if (this.active === 2) {
+					this.orderlist = []
+					this.noDataFlag =false;
+					this.requireOrder(-2)
+				}
+			},
+			toTk(id, money) {
+				let that = this
+				 uni.showModal({
+				      title: '提示',
+				      content: '是否确认退款？',
+				      success: function (res) {
+				        if (res.confirm) {  
+							http.getQuick({orderId:id}).then(fill =>{
+								if(fill.code === 9999){
+									uni.showToast({
+									    title: fill.msg,
+									    icon: 'none',
+									    duration: 1000,
+									}) 
+									 setTimeout(function () {
+									 	that.parentHandleclick()
+									 }, 1000)
+								}else{
+									uni.showToast({
+									    title: '正在退款中',
+									    icon: 'none',
+									    duration: 1000,
+									}) 
+									setTimeout(function () {
+									that.parentHandleclick()
+								}, 1000)
+							}
+
+							})
+				          // console.log('点击确认回调')
+				        } else {   
+				          // console.log('点击取消回调')
+				        }
+				      }
+				    })
+				// http.getQuick({orderId:id}).then(res =>{
+				// 	console.log()
+				// })
+				// console.log(id, money)
+				// uni.redirectTo({
+				// 	url: '/pages/refund/refund?orderId=' + id + '&amount=' + money
+				// })
+			},
+			toHome() {
+				uni.switchTab({
+					url:'../home/home'
+				})
+			},
+			toEvaluation(id, name) {
+				// console.log(name,"ppppp")
+				uni.navigateTo({
+					url: '/pages/evaluation/evaluation?order_id=' + id + '&merchant=' + name
+				})
+			},
+			//全部订单
+			allorder(){
+				// console.log('已执行')
+				http.getorderslist({
+					userId: uni.getStorageSync("user").phone,
+					limit: this.limit,
+					pageNum: 1,
+					statusCode: this.statusCode
+				
+				}).then(res => {
+					this.orderlist = res.data.records
+					this.noDataFlag=false
+					if(this.orderlist.length == 0){
+						this.noDataFlag = true;
+					}
+					this.total = res.data.total
+				})
+			},
+			requireOrder(e) {
+				http.getorderslist({
+					userId: uni.getStorageSync("user").phone,
+					limit: this.limit,
+					pageNum: 1,
+					statusCode: e
+
+				}).then(res => {
+					this.orderlist = res.data.records
+					this.noDataFlag =false;
+					if(this.orderlist.length == 0 ){
+						this.noDataFlag =true;
+					}
+					this.total = res.data.total
+					uni.hideLoading();
+					uni.stopPullDownRefresh();
+					// console.log('用户订单',this.orderlist)
+				})
+			},
+			//上拉加载
+			upper() {
+				// console.log('到底了')
+				this.pageNum += 1
+				if (this.orderlist.length !== this.total) {
+					this.loadingStatus = 'loading'
+					this.requstGoods()
+				} else {
+					this.loadingStatus = 'noMore'
+				}
+
+			},
+			topper() {
+				// console.log("触发了")
+			},
+			requstGoods() {
+				http.getorderslist({
+					userId: uni.getStorageSync("user").phone,
+					limit: this.limit,
+					pageNum: this.pageNum,
+
+				}).then(res => {
+					this.loadingStatus = 'none'
+					this.orderlist = this.orderlist.concat(res.data.records)
+				})
+			},
+		},
+		onLoad() {
+			this.usertype = uni.getStorageSync('usertype')
+			uni.hideTabBar({})
+			this.httpImg = testData.httpImg
+		},
+		onShow() {
+			
+			// console.log('我执行了show','111111111')
+			this.allorder()
+		}
+	}
+</script>
+
+<style lang="scss" scoped>
+	.jg_content{
+		width: 100%;
+		height: 50upx;
+		display: flex;
+		justify-content: space-between;
+		// margin-bottom: 20rpx;
+	}
+	.delivery{
+		margin-bottom: 20upx;
+	}
+	.Pto_time{
+		width: 100%;
+		height: 50upx;
+		line-height: 50upx;
+		display: flex;
+		justify-content: space-between;
+		font-size: 26upx;
+	}
+	.sfje_content,.ddje_content{
+		
+		text-align: right;
+		font-size: 26upx;
+		line-height: 50upx;
+	}
+	.customer {
+		// position: relative;
+		// // width: 100%;
+		// height: 100vh;
+	}
+	
+	.housing_box {
+		width: 100%;
+		// min-height: 100vh;
+		min-height: calc(100vh - 175upx);
+		// height: calc(100vh - 175upx);
+		background-color: #F6F6F6;
+	}
+
+	.allorder {
+		width: 100%;
+		height: 100%;
+		padding: 20upx 20upx;
+		box-sizing: border-box;
+		background-color: #f6f6f6;
+		margin-bottom: 90upx;
+		.crad {
+			width: 100%;
+			overflow: hidden;
+			background-color: #FFf;
+			border-radius: 20upx;
+			padding: 20upx;
+			box-sizing: border-box;
+			margin-bottom: 20upx;
+			.cp_lb{
+				width: 100%;
+				height: 50upx;
+				line-height: 50upx;
+				font-size: 28upx;
+				color: #777;
+				margin-bottom: 15upx;
+			}
+			// .cp_lb text:last-child{
+			// 	color: #30AAFF;
+			// }
+			.merchants {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 15upx;
+
+				.merchants_l {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					width: 65%;
+					font-size: 30upx;
+
+					.img_mer {
+						width: 60upx;
+						height: 60upx;
+						border-radius: 10upx;
+						margin-right: 10upx;
+						overflow: hidden;
+
+						image {
+							width: 100%;
+							height: 100%;
+						}
+					}
+
+					.wz_mer {
+						display: flex;
+						flex: 1;
+						align-items: center;
+
+						image {
+							width: 30upx;
+							height: 30upx;
+							margin-left: 5upx;
+						}
+					}
+				}
+
+				.merchants_r {
+					font-size: 26upx;
+					color: #777;
+				}
+			}
+
+			.goods {
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 20upx;
+
+				.goods_l {
+					width: 75%;
+					display: flex;
+					align-items: center;
+					font-size: 30upx;
+					color: #777;
+
+					.goods_img {
+						height: 150upx;
+						width: 150upx;
+						margin-right: 15upx;
+						// background-color: skyblue;
+						border-radius: 10upx;
+						overflow: hidden;
+					}
+				}
+
+				.goods_r {
+					display: flex;
+					flex-direction: column;
+
+					text:first-child {
+						font-size: 32upx;
+					}
+
+					text:last-child {
+						font-size: 26upx;
+						color: #777777;
+					}
+				}
+			}
+
+			.btn {
+				height: 80upx;
+				border: 1upx solid #777777;
+				border-radius: 5upx;
+				font-size: 32upx;
+				line-height: 60upx;
+				width: 170upx;
+				height: 60upx;
+				text-align: center;
+				box-sizing: border-box;
+				float: right;
+			}
+
+			.acts {
+				background-color: #f9dc67;
+				border: none;
+				margin-right: 20upx;
+			}
+		}
+		// .crad:first-child{
+		// 	margin-bottom: 60upx;
+		// }
+	}
+
+	.empty_content {
+		width: 100%;
+		padding-top: 100upx;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		image {
+			// width: 100%;
+			height: 350upx;
+		}
+
+		text {
+			color: #c3c3c3;
+			font-size: 26upx;
+		}
+	}
+</style>

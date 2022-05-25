@@ -1,0 +1,321 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.home.data-v-e380b58a {
+  width: 100%;
+  background-color: #F7F7F7;
+}
+.bg_top.data-v-e380b58a {
+  width: 100%;
+  height: 400px;
+  background-color: #3875F7;
+}
+.bg_top .content_bottom.data-v-e380b58a {
+    width: 100%;
+    height: 840rpx;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+    border-radius: 30rpx;
+    background-color: #fff;
+}
+.bg_top .content_bottom .location.data-v-e380b58a {
+      width: 100%;
+      height: 60rpx;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+              align-items: center;
+}
+.bg_top .content_bottom .location image.data-v-e380b58a {
+        width: 20px;
+        height: 20px;
+}
+.bg_top .content_bottom .location text.data-v-e380b58a {
+        font-size: 26rpx;
+}
+.bg_top .content_bottom .search_box.data-v-e380b58a {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+              align-items: center;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+              justify-content: space-between;
+      border: 1rpx solid #3875F7;
+      width: 100%;
+      height: 80rpx;
+      border-radius: 80rpx;
+      box-sizing: border-box;
+      padding-left: 30rpx;
+}
+.bg_top .content_bottom .search_box image.data-v-e380b58a {
+        width: 50rpx;
+        height: 50rpx;
+}
+.bg_top .content_bottom .search_box input.data-v-e380b58a {
+        width: 70%;
+}
+.bg_top .content_bottom .search_box text.data-v-e380b58a {
+        width: 130rpx;
+        height: 100%;
+        line-height: 80rpx;
+        font-size: 28rpx;
+        background-color: #3875F7;
+        color: #fff;
+        border-radius: 40rpx;
+        text-align: center;
+}
+.bg_top .content_bottom .tags.data-v-e380b58a {
+      margin-top: 10rpx;
+      width: 100%;
+      height: 50rpx;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: left;
+      -webkit-justify-content: left;
+              justify-content: left;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+              align-items: center;
+      margin-bottom: 20rpx;
+}
+.bg_top .content_bottom .tags text.data-v-e380b58a {
+        background-color: #F1F1F1;
+        margin-left: 25rpx;
+        height: 35rpx;
+        border-radius: 35rpx;
+        font-size: 22rpx;
+        padding: 0 20rpx;
+}
+.bg_top .content_bottom .head_img.data-v-e380b58a {
+      width: 100%;
+      height: 260rpx;
+      margin-bottom: 20rpx;
+}
+.bg_top .content_bottom .head_img image.data-v-e380b58a {
+        width: 100%;
+        height: 100%;
+        border-radius: 30rpx;
+}
+.bg_top .content_bottom .category.data-v-e380b58a {
+      width: 100%;
+      height: 320rpx;
+      padding: 0 20rpx;
+      box-sizing: border-box;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+              justify-content: space-between;
+      -webkit-flex-wrap: wrap;
+              flex-wrap: wrap;
+}
+.bg_top .content_bottom .category view.data-v-e380b58a {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+                flex-direction: column;
+        -webkit-justify-content: space-around;
+                justify-content: space-around;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+                align-items: center;
+        width: 150rpx;
+        height: 150rpx;
+}
+.bg_top .content_bottom .category view image.data-v-e380b58a {
+          width: 100rpx;
+          height: 100rpx;
+}
+.bg_top .content_bottom .category view text.data-v-e380b58a {
+          font-size: 24rpx;
+}
+.goodslist.data-v-e380b58a {
+  margin-top: 65rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+.goodslist .title.data-v-e380b58a {
+    height: 50rpx;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+            justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+            align-items: center;
+    margin-bottom: 20rpx;
+}
+.goodslist .title view.data-v-e380b58a {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+              align-items: center;
+      height: 100%;
+      font-size: 34rpx;
+      font-weight: 600;
+}
+.goodslist .title view text.data-v-e380b58a {
+        font-size: 24rpx;
+        font-weight: 400;
+}
+.goodslist .title view image.data-v-e380b58a {
+        width: 20rpx;
+        height: 20rpx;
+}
+.goodslist .tag_list.data-v-e380b58a {
+    width: 100%;
+    height: 80rpx;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+            justify-content: space-between;
+}
+.goodslist .tag_list view.data-v-e380b58a {
+      padding: 0 10rpx;
+      box-sizing: border-box;
+      width: 170rpx;
+      height: 60rpx;
+      border-radius: 15rpx;
+      background-color: #fff;
+      font-size: 24rpx;
+      line-height: 60rpx;
+      text-align: center;
+}
+.goodslist .goods .crad.data-v-e380b58a {
+    width: 100%;
+    height: 220rpx;
+    background-color: #fff;
+    border-radius: 10rpx;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    padding: 20rpx;
+    box-sizing: border-box;
+    margin-bottom: 20rpx;
+}
+.goodslist .goods .crad .img_l.data-v-e380b58a {
+      width: 180rpx;
+      height: 100%;
+      background-color: deeppink;
+      border-radius: 20rpx;
+      margin-right: 15rpx;
+}
+.goodslist .goods .crad .content.data-v-e380b58a {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+              flex: 1;
+}
+.goodslist .goods .crad .content .content_top.data-v-e380b58a {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-between;
+                justify-content: space-between;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+                align-items: center;
+        width: 100%;
+        height: 35rpx;
+        margin-bottom: 5rpx;
+}
+.goodslist .goods .crad .content .content_top text.data-v-e380b58a {
+          width: 80%;
+          font-size: 32rpx;
+          font-weight: 500;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+}
+.goodslist .goods .crad .content .content_top image.data-v-e380b58a {
+          width: 30rpx;
+          height: 30rpx;
+          margin-right: 10rpx;
+}
+.goodslist .goods .crad .content .content_middle.data-v-e380b58a {
+        width: 100%;
+        font-size: 24rpx;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-between;
+                justify-content: space-between;
+        margin-bottom: 5rpx;
+        color: #888888;
+}
+.goodslist .goods .crad .content .content_middle view > text.data-v-e380b58a:first-child {
+          margin-right: 10rpx;
+}
+.goodslist .goods .crad .content .content_middle .sales text.data-v-e380b58a:first-child {
+          color: #ED6E2D;
+}
+.goodslist .goods .crad .content .content_bottom.data-v-e380b58a {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-between;
+                justify-content: space-between;
+        width: 100%;
+        font-size: 24rpx;
+        margin-bottom: 5rpx;
+        color: #888888;
+}
+.goodslist .goods .crad .content .content_bottom .sales > text.data-v-e380b58a:first-child {
+          margin-right: 10rpx;
+}
+.goodslist .goods .crad .content .preferential.data-v-e380b58a {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+}
+.goodslist .goods .crad .content .preferential text.data-v-e380b58a {
+          font-size: 22rpx;
+          height: 30rpx;
+          border: 1rpx solid #F8D2CC;
+          color: #ED624A;
+          padding: 5rpx 10rpx;
+          border-radius: 10rpx;
+          margin-right: 10rpx;
+}
+
